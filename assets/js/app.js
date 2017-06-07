@@ -16,9 +16,9 @@ var questions = [
     correctAnswer: "343 meters"        
   },
    {
-    question: "How tall is the John Hancock Center (Antenna Excluded) ?",
-    answer: ["198 meters", "332 meters", "343 meters", "247 meters"],
-    correctAnswer: "343 meters"        
+    question: "Where does the Hancock Center rank in terms of tallest building in America?",
+    answer: ["4th Tallest", "8th Tallest", "10th Tallest", "2nd Tallest"],
+    correctAnswer: "8th Tallest"        
   },
      {
     question: "How tall is the John Hancock Center (Antenna Excluded) ?",
