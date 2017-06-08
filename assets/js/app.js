@@ -21,9 +21,9 @@ var questions = [
     correctAnswer: "8th Tallest"        
   },
      {
-    question: "How tall is the John Hancock Center (Antenna Excluded) ?",
-    answer: ["198 meters", "332 meters", "343 meters", "247 meters"],
-    correctAnswer: "343 meters"        
+    question: "True or False - The Mayor of Chicago once allowed a man to climb the exterior of the Hancock Center?",
+    answer: ["True", "False"],
+    correctAnswer: "True"        
   },
      {
     question: "How tall is the John Hancock Center (Antenna Excluded) ?",
