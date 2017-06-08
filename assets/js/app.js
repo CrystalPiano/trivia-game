@@ -1,7 +1,7 @@
 // ==============  NOTES  ===================
-
-
-
+// Game will not load upon pressing 'start' button.
+//
+//
 // ==============  VARIABLES  ===============
 
 var questions = [
@@ -25,26 +25,33 @@ var questions = [
     answer: ["True", "False"],
     correctAnswer: "True"        
   },
-     {
-    question: "How tall is the John Hancock Center (Antenna Excluded) ?",
-    answer: ["198 meters", "332 meters", "343 meters", "247 meters"],
-    correctAnswer: "343 meters"        
-  },
-     {
-    question: "How tall is the John Hancock Center (Antenna Excluded) ?",
-    answer: ["198 meters", "332 meters", "343 meters", "247 meters"],
-    correctAnswer: "343 meters"        
-  },
 ];
 
+var right = 0
+
+var wrong = 0
 
 // ==============  EVENTS  ==================
 
-/* initizlize */
-        /* button click */
-        $('#start').on('click', function() {
-          startGame();
-        })
+/* initizlize on click*/
+$('#start').on('click', function() {
+  startGame();
+  $('.js-check').on('click', function() {
+    alert($(this).attr('data-name'));
+    questions[0].correctAnswer;
+    alert(questions[this.name].correctAnswer);
+    if (answerChosen === correctAnswer) {
+      alert("You got it!");
+      right ++;
+      alert(right);
+    } 
+      else {
+        alert("Nope!");
+        wrong ++;
+        alert(wrong);
+      }
+  });
+ })
 
 // ==============  FUNCTIONS  ===============
 
@@ -59,7 +66,9 @@ function startGame() {
           questionString = '<div>' + j + '. ' + questions[i].question + '</div>';
 
           for(var a=0; a < questions[i].answer.length; a++) {
-            answerString += '<input class="answer" type="radio">' + questions[i].answer[a] + '</input>';
+            answerString +=
+            '<input class="answer js-check" type="radio" name="' + i + '" data-name="' + questions[i].answer[a] + '">' + questions[i].answer[a] +
+            '</input>';
           }
 
           $('#questions').append('<div class="question">' + questionString + answerString + '</div>');
