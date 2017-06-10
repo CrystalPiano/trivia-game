@@ -1,6 +1,6 @@
 // ==============  NOTES  ===================
 // Game will not load upon pressing 'start' button.
-//
+// Need to add timer and start on click
 //
 // ==============  VARIABLES  ===============
 
@@ -27,19 +27,24 @@ var questions = [
   },
 ];
 
-var right = 0
+// Varibles for declaring totals per category
+var correct = 0
 
-var wrong = 0
+var incorrect = 0
+
+var unanswered = 0
 
 // ==============  EVENTS  ==================
 
-/* initizlize on click*/
+// Begins game on click and starts timer.
 $('#start').on('click', function() {
+  //alert('Hello');
   startGame();
   $('.js-check').on('click', function() {
     alert($(this).attr('data-name'));
     questions[0].correctAnswer;
     alert(questions[this.name].correctAnswer);
+    // Determines if user correct or incorrect, then applies approprite tally.
     if (answerChosen === correctAnswer) {
       alert("You got it!");
       right ++;
