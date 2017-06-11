@@ -91,7 +91,7 @@ function startGame() {
           }
 
           // Adds next question below previous question
-          $('#questions').append('<div class="question">' + questionString + answerString + '</div>');
+          $('#questions').append('<div class="question">' + questionString + answerString + '</div>' + '<br>');
     };
 };
 
