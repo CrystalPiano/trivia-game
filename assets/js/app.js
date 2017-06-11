@@ -32,8 +32,6 @@ var correct = 0;
 var incorrect = 0;
 var unanswered = 0;
 
-//Array containing user choices
-var selections = [];
 
 // ==============  EVENTS  ==================
 
@@ -48,33 +46,36 @@ $('#start').on('click', function() {
   // Calls game to start
   startGame();
 
-  // 
+  // Collects user clicked answer
   $('.js-check').on('click', function() {
-    console.log($(this).attr('data-name'));
+      //console.log($(this).attr('data-name'));
     questions[0].correctAnswer;
-    console.log(questions[this.name].correctAnswer);
-    var answerChosen = 'js-check';
-    var correctAnswer = 'data-name';
+      //console.log(questions[this.name].correctAnswer);
 
-    // Determines if user correct or incorrect, then applies appropriate tally
+    // Variables to hold user answer and correct answer
+    var answerChosen = ($(this).attr('data-name'));
+    var correctAnswer = questions[this.name].correctAnswer;
+
+    // Determines if user choice is correct or incorrect, then applies appropriate tally
     if (answerChosen === correctAnswer) {
       alert("You got it!");
       correct ++;
-      alert(correct);
+      $('#correct').html('Correct: ' + correct);
     } 
-      else {
-        alert("Nope!");
-        incorrect ++;
-        alert(incorrect);
-      }
+    else {
+      alert("Nope!");
+      incorrect ++;
+      $('#incorrect').html('Incorrect: ' + incorrect);
+    }
   });
 });
 
 // ==============  FUNCTIONS  ===============
+
 //Game Start Function
 function startGame() {
 
-  // Dynamically creates questions and their divs
+  // Dynamically creates questions and their buttons
 	var j = 0;
 	var questionString = '';
         for(var i=0; i < questions.length; i++) {
@@ -92,10 +93,6 @@ function startGame() {
     };
 };
 
-// Logs user choice
-function choose() {
-    selections[] = +$('input[name="answer"]:checked').val();
-  }
 
 // Adds correct tally to correct id
 $('#correct').html('Correct: ' + correct);
