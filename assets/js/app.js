@@ -1,6 +1,6 @@
 // ==============  NOTES  ===================
-// Game will not load upon pressing 'start' button.
-// Need to add timer and start on click
+// 
+// 
 //
 // ==============  VARIABLES  ===============
 
@@ -28,54 +28,97 @@ var questions = [
 ];
 
 // Varibles for declaring totals per category
-var correct = 0
+var correct = 0;
+var incorrect = 0;
+var unanswered = 0;
 
-var incorrect = 0
-
-var unanswered = 0
+//Array containing user choices
+var selections = [];
 
 // ==============  EVENTS  ==================
 
-// Begins game on click and starts timer.
+// Begins game on click and starts timer
 $('#start').on('click', function() {
-  //alert('Hello');
+
+  // Calls for timer
+  var fiveMinutes = 60 * 5,
+        display = $('#countdown');
+        startTimer(fiveMinutes, display);
+
+  // Calls game to start
   startGame();
+
+  // 
   $('.js-check').on('click', function() {
-    alert($(this).attr('data-name'));
+    console.log($(this).attr('data-name'));
     questions[0].correctAnswer;
-    alert(questions[this.name].correctAnswer);
-    // Determines if user correct or incorrect, then applies approprite tally.
+    console.log(questions[this.name].correctAnswer);
+    var answerChosen = 'js-check';
+    var correctAnswer = 'data-name';
+
+    // Determines if user correct or incorrect, then applies appropriate tally
     if (answerChosen === correctAnswer) {
       alert("You got it!");
-      right ++;
-      alert(right);
+      correct ++;
+      alert(correct);
     } 
       else {
         alert("Nope!");
-        wrong ++;
-        alert(wrong);
+        incorrect ++;
+        alert(incorrect);
       }
   });
- })
+});
 
 // ==============  FUNCTIONS  ===============
-
+//Game Start Function
 function startGame() {
+
+  // Dynamically creates questions and their divs
 	var j = 0;
 	var questionString = '';
         for(var i=0; i < questions.length; i++) {
           j++;
-
           var answerString = '';
-          
           questionString = '<div>' + j + '. ' + questions[i].question + '</div>';
-
           for(var a=0; a < questions[i].answer.length; a++) {
             answerString +=
             '<input class="answer js-check" type="radio" name="' + i + '" data-name="' + questions[i].answer[a] + '">' + questions[i].answer[a] +
-            '</input>';
+            '</input>' + '<br>';
           }
 
+          // Adds next question below previous question
           $('#questions').append('<div class="question">' + questionString + answerString + '</div>');
-    }
-}
+    };
+};
+
+// Logs user choice
+function choose() {
+    selections[] = +$('input[name="answer"]:checked').val();
+  }
+
+// Adds correct tally to correct id
+$('#correct').html('Correct: ' + correct);
+// Adds incorrect tally to incorrect id
+$('#incorrect').html('Incorrect ' + incorrect);
+// Adds missed tally to unanswered id
+$('#unanswered').html('Unanswered ' + unanswered);
+
+
+// Timer Function
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        display.text("Time Remaining: " + minutes + ":" + seconds);
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+};
