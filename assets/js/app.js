@@ -1,8 +1,9 @@
 // ==============  NOTES  ===================
 // How to make selected answer uneditable
-// How to clear screen after timer hits 00:00
+// How to clear screen after timer hits 00:00 and display stats
 // How to not add questions again when repeatedly hitting 'start'
 // Only lets me log one correct and one incorrect tally?
+// Reset does not work...
 // ==============  VARIABLES  ===============
 
 var questions = [
