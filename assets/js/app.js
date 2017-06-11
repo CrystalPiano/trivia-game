@@ -1,7 +1,6 @@
 // ==============  NOTES  ===================
 // How to make selected answer uneditable
 // How to clear screen after timer hits 00:00 and display stats
-// How to not add questions again when repeatedly hitting 'start'
 // Only lets me log one correct and one incorrect tally?
 // Reset does not work...
 // ==============  VARIABLES  ===============
@@ -38,7 +37,7 @@ var unanswered = 0;
 // ==============  EVENTS  ==================
 
 // Begins game on click and starts timer
-$('#start').on('click', function() {
+$('#start').one('click', function() {
 
   // Calls for timer
   var oneMinute = 30 * 1,
@@ -86,7 +85,7 @@ function startGame() {
           questionString = '<div>' + j + '. ' + questions[i].question + '</div>';
           for(var a=0; a < questions[i].answer.length; a++) {
             answerString +=
-            '<input class="answer js-check" type="radio" name="' + i + '" data-name="' + questions[i].answer[a] + '">' + questions[i].answer[a] +
+            '<input class="answer js-check" type="radio" name="' + i + '" data-name="' + questions[i].answer[a] + '">'+ "&nbsp" + "&nbsp" + questions[i].answer[a] +
             '</input>' + '<br>';
           }
 
