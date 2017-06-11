@@ -1,7 +1,8 @@
 // ==============  NOTES  ===================
-// 
-// 
-//
+// How to make selected answer uneditable
+// How to clear screen after timer hits 00:00
+// How to not add questions again when repeatedly hitting 'start'
+// Only lets me log one correct and one incorrect tally?
 // ==============  VARIABLES  ===============
 
 var questions = [
@@ -39,18 +40,18 @@ var unanswered = 0;
 $('#start').on('click', function() {
 
   // Calls for timer
-  var fiveMinutes = 60 * 5,
+  var oneMinute = 30 * 1,
         display = $('#countdown');
-        startTimer(fiveMinutes, display);
+        startTimer(oneMinute, display);
 
   // Calls game to start
   startGame();
 
   // Collects user clicked answer
   $('.js-check').on('click', function() {
-      //console.log($(this).attr('data-name'));
+      console.log($(this).attr('data-name'));
     questions[0].correctAnswer;
-      //console.log(questions[this.name].correctAnswer);
+      console.log(questions[this.name].correctAnswer);
 
     // Variables to hold user answer and correct answer
     var answerChosen = ($(this).attr('data-name'));
@@ -116,6 +117,18 @@ function startTimer(duration, display) {
 
         if (--timer < 0) {
             timer = duration;
+
+        }
+
+        else {
+          reset();
         }
     }, 1000);
 };
+
+// Game reset
+function reset() {
+  correct = 0;
+  incorrect = 0;
+  unanswered = 0;
+}
